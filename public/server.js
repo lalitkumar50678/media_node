@@ -8,15 +8,15 @@ const PORT = process.env.PORT || 3002;
 app.set("view engine", "ejs");
 
 // Serve static files
-app.use("/images", express.static(path.join(__dirname, "public/images")));
-app.use("/videos", express.static(path.join(__dirname, "public/videos")));
+app.use(express.static(path.join(__dirname, "")));
+// app.use(express.static(path.join(__dirname, "/public")));
 
 // Sample media data (you can expand this)
 const images = [
-  "images/image1.jpg",
-  "images/image2.jpg",
-  "images/image3.jpg",
-  "images/image4.jpg",
+  "images/image1.jpeg",
+  "images/image2.jpeg",
+  "images/image3.jpeg",
+  "images/image4.jpeg",
   "images/image5.jpg",
   "images/image6.jpg",
   "images/image7.jpg",
@@ -69,9 +69,15 @@ app.get("/api/images", (req, res) => {
 
   res.json({
     images: paginatedImages,
+    dirname: path.join(__dirname, "/images"),
     currentPage: page,
     totalPages: totalPagesImages,
   });
+});
+
+app.get("/test", (req, res) => {
+  res.sendFile(path.join(__dirname, "images/image1.jpeg"));
+  console.log(path.join(__dirname, "images/image1.jpeg"));
 });
 
 app.get("/api/videos", (req, res) => {
