@@ -95,6 +95,7 @@ app.get("/api/videos", (req, res) => {
 
   res.json({
     videos: paginatedVideos,
+    dirname: path.join(__dirname, "/videos"),
     currentPage: page,
     totalPages: totalPagesVideos,
   });
