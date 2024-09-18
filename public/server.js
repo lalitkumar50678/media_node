@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3002;
 
 // Set EJS as templating engine
 app.set("view engine", "ejs");
@@ -58,34 +58,26 @@ app.get("/api/images", (req, res) => {
   const page = parseInt(req.query.page) || 1;
 
   const totalImages = images.length;
-  const totalVideos = videos.length;
 
   const totalPagesImages = Math.ceil(totalImages / ITEMS_PER_PAGE);
-  const totalPagesVideos = Math.ceil(totalVideos / ITEMS_PER_PAGE);
 
   const imageStartIndex = (page - 1) * ITEMS_PER_PAGE;
-  const videoStartIndex = (page - 1) * ITEMS_PER_PAGE;
 
   const paginatedImages = images.slice(
     imageStartIndex,
     imageStartIndex + ITEMS_PER_PAGE
   );
-  const paginatedVideos = videos.slice(
-    videoStartIndex,
-    videoStartIndex + ITEMS_PER_PAGE
-  );
 
-  res.writeHead(200, { "Content-Type": "application/json" });
-  res.write(
-    JSON.stringify({
-      images: paginatedImages,
-      videos: paginatedVideos,
-      currentPage: page,
-      totalPagesImages,
-      totalPagesVideos,
-    })
-  );
-  res.end();
+  res.json({
+    images: paginatedImages,
+    currentPage: page,
+    totalPages: totalPagesImages,
+  });
+});
+
+// Render the main page
+app.get("/", (req, res) => {
+  res.render("index");
 });
 
 app.listen(PORT, () => {
