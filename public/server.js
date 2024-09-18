@@ -56,17 +56,16 @@ const ITEMS_PER_PAGE = 2;
 
 app.get("/api/images", (req, res) => {
   const page = parseInt(req.query.page) || 1;
-
   const totalImages = images.length;
-
   const totalPagesImages = Math.ceil(totalImages / ITEMS_PER_PAGE);
-
   const imageStartIndex = (page - 1) * ITEMS_PER_PAGE;
 
-  const paginatedImages = images.slice(
-    imageStartIndex,
-    imageStartIndex + ITEMS_PER_PAGE
-  );
+  const baseUrl = `${req.protocol}://${req.get("host")}`;
+  const paginatedImages = images
+    .slice(imageStartIndex, imageStartIndex + ITEMS_PER_PAGE)
+    .map((image) => {
+      return `${baseUrl}/${image}`;
+    });
 
   res.json({
     images: paginatedImages,
@@ -75,9 +74,29 @@ app.get("/api/images", (req, res) => {
   });
 });
 
+app.get("/api/videos", (req, res) => {
+  const page = parseInt(req.query.page) || 1;
+  const totalVideos = videos.length;
+  const totalPagesVideos = Math.ceil(totalVideos / ITEMS_PER_PAGE);
+  const videoStartIndex = (page - 1) * ITEMS_PER_PAGE;
+
+  const baseUrl = `${req.protocol}://${req.get("host")}`;
+  const paginatedVideos = videos
+    .slice(videoStartIndex, videoStartIndex + ITEMS_PER_PAGE)
+    .map((video) => {
+      return `${baseUrl}/${video}`;
+    });
+
+  res.json({
+    videos: paginatedVideos,
+    currentPage: page,
+    totalPages: totalPagesVideos,
+  });
+});
+
 // Render the main page
 app.get("/", (req, res) => {
-  res.render("index");
+  res.send("<h1>Hi Lalit</h1>");
 });
 
 app.listen(PORT, () => {
