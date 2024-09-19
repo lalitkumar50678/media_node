@@ -23,7 +23,7 @@ app.get("/api/getMedia", (req, res) => {
   path.join(__dirname, "images");
 
   res.json({
-    images: paginatedMedia,
+    media: paginatedMedia,
     currentPage: page,
     dirname: path.join(__dirname, "/"),
     totalPages: totalPagesMedia,

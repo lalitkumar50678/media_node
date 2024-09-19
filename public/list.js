@@ -148,50 +148,40 @@ export const mediaList = [
   {
     id: "131",
     type: "video",
-    url: "videos/video2.mp4",
-  },
-  {
-    id: "132",
-    type: "video",
     url: "videos/video3.mp4",
   },
   {
-    id: "133",
+    id: "132",
     type: "image",
     url: "images/image19.jpeg",
   },
   {
-    id: "134",
+    id: "133",
     type: "image",
-    url: "images/image20.jpg",
+    url: "images/image20.jpeg",
+  },
+  {
+    id: "134",
+    type: "video",
+    url: "videos/video3.mp4",
   },
   {
     id: "135",
-    type: "video",
-    url: "videos/video4.mp4",
-  },
-  {
-    id: "136",
     type: "image",
     url: "images/image21.jpeg",
   },
   {
     id: "137",
-    type: "image",
-    url: "images/image22.jpg",
+    type: "video",
+    url: "videos/video4.mp4",
   },
   {
     id: "138",
-    type: "video",
-    url: "videos/video5.mp4",
-  },
-  {
-    id: "139",
     type: "image",
     url: "images/image22.jpg",
   },
   {
-    id: "140",
+    id: "139",
     type: "image",
     url: "images/image23.jpg",
   },
