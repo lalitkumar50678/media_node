@@ -20,12 +20,12 @@ app.get("/api/getMedia", (req, res) => {
   const paginatedMedia = mediaList
     .slice(mediaStartIndex, mediaStartIndex + ITEMS_PER_PAGE)
     .map((item) => ({ ...item, url: `${baseUrl}/${item.url}` }));
-  path.join(__dirname, "public");
+  path.join(__dirname, "images");
 
   res.json({
     images: paginatedMedia,
     currentPage: page,
-    dirname: path.join(__dirname, "public"),
+    dirname: path.join(__dirname, ""),
     totalPages: totalPagesMedia,
   });
 });
