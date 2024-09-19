@@ -57,8 +57,8 @@ export const mediaList = [
   },
   {
     id: "113",
-    type: "image",
-    url: "videos/video.mp4",
+    type: "video",
+    url: "videos/video1.mp4",
   },
   {
     id: "114",
@@ -88,7 +88,7 @@ export const mediaList = [
   {
     id: "119",
     type: "video",
-    url: "videos/video.mp4",
+    url: "videos/video2.mp4",
   },
   {
     id: "120",
